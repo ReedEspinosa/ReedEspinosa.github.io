@@ -6,11 +6,13 @@ function getParameterByName(name) {
 }
 
 $(document).ready(function(){ 
-  var pageId = getParameterByName('page');
-  if (!pageId || 0 === pageId.length) {
-    pageId = "pages/article.html";
-  }
-  $.get(pageId, function(data) {
-    $("#articleInsert").html(data);
-  });
+    var postDir = "posts/";
+    var pageID = getParameterByName('page');
+    if (!pageID || 0 === pageID.length) {
+        pageID = "article.html";
+    }
+    var postPath = postDir.concat(pageID);
+    $.get(postPath, function(data) {
+        $("#articleInsert").html(data);
+    });
 }); 
